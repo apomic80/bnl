@@ -1,7 +1,49 @@
 <form novalidate>
     <h2>Event {{ currentEvent.name }}</h2>
 
-    <button type="button" class="btn btn-default">
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input id="name" name="name" #nameModel="ngModel" [(ngModel)]="currentEvent.name" type="text" class="form-control" placeholder="Event name">
+        <div [hidden]="nameModel.valid || nameModel.pristine" class="alert alert-danger">
+            Name is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="description">Description:</label>
+        <input id="description" name="description" #descriptionModel="ngModel" [(ngModel)]="currentEvent.description" type="text" class="form-control" placeholder="Event description">
+    </div>
+
+    <div class="form-group">
+        <label for="startdate">Start date:</label>
+        <input id="startdate" name="startdate" #startdateModel="ngModel" [(ngModel)]="currentEvent.startDate" type="text" class="form-control" placeholder="Event start date">
+        <div [hidden]="startdateModel.valid || startdateModel.pristine" class="alert alert-danger">
+            Start date is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="enddate">End date:</label>
+        <input id="enddate" name="enddate" #enddateModel="ngModel" [(ngModel)]="currentEvent.endDate" type="text" class="form-control" placeholder="Event end date">
+        <div [hidden]="enddateModel.valid || enddateModel.pristine" class="alert alert-danger">
+            End date is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="location">Location:</label>
+        <input id="location" name="location" #locationModel="ngModel" [(ngModel)]="currentEvent.location" type="text" class="form-control" placeholder="Event location">
+        <div [hidden]="locationModel.valid || locationModel.pristine" class="alert alert-danger">
+            Location is required
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="visible">Visible:</label>
+        <input id="visible" name="visible" #visibleModel="ngModel" [(ngModel)]="currentEvent.visible" type="checkbox" class="form-control">
+    </div>
+
+    <button type="button" class="btn btn-default" (click)="save()">
       <i class="glyphicon glyphicon-ok"></i> Save
     </button>
     <button type="button" class="btn btn-default" (click)="cancel()">

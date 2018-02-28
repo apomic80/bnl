@@ -16,7 +16,7 @@
             <td>{{ item.name }}</td>
             <td>{{ item.startDate }}</td>
             <td>{{ item.endDate }}</td>
-            <td>{{ item.visible }}</td>
+            <td>{{ item.visible | boolean }}</td>
             <td>
                 <button class="btn btn-small btn-warning" (click)="edit(item)">
           <i class="glyphicon glyphicon-pencil"></i> Edit
@@ -28,5 +28,5 @@
         </tr>
     </table>
 </div>
-<app-event *ngIf="formVisible" (cancelled)="hideForm()" [currentEvent]="selectedEvent">
+<app-event *ngIf="formVisible" (saved)="save()" (cancelled)="hideForm()" [currentEvent]="selectedEvent">
 </app-event>

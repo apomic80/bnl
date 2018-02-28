@@ -38,6 +38,11 @@ export class EventsComponent {
     alert('delete ' + JSON.stringify(event));
   }
 
+  save() {
+    this.hideForm();
+    this.loadEvents();
+  }
+
   public loadEvents() {
     this.eventList = [
       {
