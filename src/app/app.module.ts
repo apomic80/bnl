@@ -10,14 +10,17 @@ import { EventComponent } from './events/event.component';
 import { BooleanPipe } from './shared/boolean.pipe';
 import { EventsService } from './events/events.service';
 import { CommonModule } from '@angular/common';
+import { SpeakersComponent } from './speakers/speakers.component';
+import { routing } from './app.routes';
 
 @NgModule({
   declarations: [
-    AppComponent, MenuComponent, EventsComponent, EventComponent,
-    BooleanPipe
+    AppComponent, MenuComponent, EventsComponent,
+    EventComponent, BooleanPipe, SpeakersComponent
   ],
   imports: [
-    BrowserModule, FormsModule, HttpModule, CommonModule
+    BrowserModule, FormsModule, HttpModule,
+    CommonModule, routing
   ],
   providers: [EventsService],
   bootstrap: [AppComponent]
