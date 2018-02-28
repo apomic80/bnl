@@ -12,6 +12,9 @@ import { EventsService } from './events/events.service';
 import { CommonModule } from '@angular/common';
 import { SpeakersComponent } from './speakers/speakers.component';
 import { routing } from './app.routes';
+import { EventsResolver } from './events/events.resolver';
+import { EventsCanDeactivateGuard } from './events/eventscandeactivate.guard';
+import { EventsCanActivateGuard } from './events/eventscanactivate.guard';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,7 @@ import { routing } from './app.routes';
     BrowserModule, FormsModule, HttpModule,
     CommonModule, routing
   ],
-  providers: [EventsService],
+  providers: [EventsService, EventsResolver, EventsCanDeactivateGuard, EventsCanActivateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

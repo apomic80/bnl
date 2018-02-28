@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Event } from './events.model';
 import { EventsService } from './events.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -12,9 +13,12 @@ export class EventsComponent {
   public selectedEvent: Event;
   public formVisible: boolean;
 
-  constructor(private service: EventsService) {
+  constructor(
+    private service: EventsService,
+    private activatedRoute: ActivatedRoute) {
     this.formVisible = false;
-    this.loadEvents();
+    // this.loadEvents();
+    this.eventList = this.activatedRoute.snapshot.data['events'];
   }
 
   public showForm() {
