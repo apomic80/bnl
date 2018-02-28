@@ -1,10 +1,10 @@
 <form novalidate>
-  <h2>Event </h2>
+    <h2>Event {{ currentEvent.name }}</h2>
 
-  <button type="button" class="btn btn-default">
-    <i class="glyphicon glyphicon-ok"></i> Save
-  </button>
-  <button type="button" class="btn btn-default">
-    <i class="glyphicon glyphicon-remove"></i> Cancel
-  </button>
+    <button type="button" class="btn btn-default">
+      <i class="glyphicon glyphicon-ok"></i> Save
+    </button>
+    <button type="button" class="btn btn-default" (click)="cancel()">
+      <i class="glyphicon glyphicon-remove"></i> Cancel
+    </button>
 </form>

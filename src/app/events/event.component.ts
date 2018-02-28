@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Event  } from './events.model';
 
 @Component({
   selector: 'app-event',
@@ -6,6 +7,18 @@ import { Component } from '@angular/core';
 })
 export class EventComponent {
 
-  constructor() { }
+  @Input()
+  public currentEvent: Event;
+
+  @Output()
+  public cancelled: EventEmitter<any>;
+
+  constructor() {
+    this.cancelled = new EventEmitter();
+  }
+
+  cancel() {
+    this.cancelled.emit();
+  }
 
 }

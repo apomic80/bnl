@@ -8,6 +8,7 @@ import { Event } from "./events.model";
 export class EventsComponent {
 
   public eventList: Event[];
+  public selectedEvent: Event;
   public formVisible: boolean;
 
   constructor() {
@@ -24,10 +25,12 @@ export class EventsComponent {
   }
 
   create() {
+    this.selectedEvent = new Event();
     this.showForm();
   }
 
   edit(event: Event) {
+    this.selectedEvent = event;
     this.showForm();
   }
 
