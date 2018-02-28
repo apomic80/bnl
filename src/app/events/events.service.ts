@@ -17,4 +17,25 @@ export class EventsService {
     return this.http.get(this.apiUrl)
       .map((response: Response) => response.json() as Event[]);
   }
+
+  public getEvent(id: number): Observable<Event> {
+    return this.http.get(`${this.apiUrl}/${id}`)
+      .map((response: Response) => response.json() as Event);
+  }
+
+  public createEvent(event: Event): Observable<Event> {
+    return this.http.post(this.apiUrl, event)
+      .map((response: Response) => response.json() as Event);
+  }
+
+  public updateEvent(event: Event): Observable<Event> {
+    return this.http.put(`${this.apiUrl}/${event.id}`, event)
+      .map((response: Response) => response.json() as Event);
+  }
+
+  public deleteEvent(id: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${id}`)
+      .map((response: Response) => response.json());
+  }
+
 }

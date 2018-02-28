@@ -36,7 +36,8 @@ export class EventsComponent {
   }
 
   delete(event: Event) {
-    alert('delete ' + JSON.stringify(event));
+    this.service.deleteEvent(event.id)
+      .subscribe(arg => this.loadEvents());
   }
 
   save() {

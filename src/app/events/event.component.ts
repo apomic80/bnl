@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Event  } from './events.model';
+import { EventsService } from './events.service';
 
 @Component({
   selector: 'app-event',
@@ -16,13 +17,25 @@ export class EventComponent {
   @Output()
   public saved: EventEmitter<any>;
 
-  constructor() {
+  public errorMessage: string;
+
+  constructor(private service: EventsService) {
     this.cancelled = new EventEmitter();
     this.saved = new EventEmitter();
   }
 
   save() {
-    this.saved.emit();
+    if (!this.currentEvent.id) {
+      this.service.createEvent(this.currentEvent)
+        .subscribe(
+          arg => this.saved.emit(),
+          err => this.errorMessage = err);
+    } else {
+      this.service.updateEvent(this.currentEvent)
+        .subscribe(
+          arg => this.saved.emit(),
+          err => this.errorMessage = err);
+    }
   }
 
   cancel() {
