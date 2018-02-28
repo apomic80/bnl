@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Event } from "./events.model";
+import { Event } from './events.model';
+import { EventsService } from './events.service';
 
 @Component({
   selector: 'app-events',
@@ -11,7 +12,7 @@ export class EventsComponent {
   public selectedEvent: Event;
   public formVisible: boolean;
 
-  constructor() {
+  constructor(private service: EventsService) {
     this.formVisible = false;
     this.loadEvents();
   }
@@ -44,25 +45,8 @@ export class EventsComponent {
   }
 
   public loadEvents() {
-    this.eventList = [
-      {
-        id: 1,
-        name: 'Angular 2 Lab',
-        startDate: '23-09-2016',
-        endDate: '23-09-2016',
-        description: 'Laboratorio su Angular 2',
-        visible: true,
-        location: 'casoria' },
-      {
-        id: 2,
-        name: 'Meetup salerno',
-        startDate: '24-09-2016',
-        endDate: '24-09-2016',
-        description: 'Typescript e Angular 2',
-        visible: true,
-        location: 'salerno'
-      }
-    ];
+    this.service.getEvents()
+      .subscribe(arg => this.eventList = arg);
   }
 
 }
